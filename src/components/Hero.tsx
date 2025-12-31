@@ -1,23 +1,47 @@
+import { useEffect, useState } from "react";
 import { ArrowRight, Award, Users, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-construction.jpg";
+import constructionImage1 from "@/assets/ben-koorengevel-7Nury9JUjFE-unsplash.jpg";
+import constructionImage2 from "@/assets/etienne-girardet-sgYamIzhAhg-unsplash.jpg";
+import constructionImage3 from "@/assets/saad-salim-PqRvLsjD_TU-unsplash.jpg";
 
 const Hero = () => {
+  const heroImages = [
+    heroImage,
+    constructionImage1,
+    constructionImage2,
+    constructionImage3,
+  ];
+  const [activeIndex, setActiveIndex] = useState(0);
   const stats = [
     { icon: Building2, value: "150+", label: "Projets Réalisés" },
     { icon: Users, value: "50+", label: "Clients Satisfaits" },
     { icon: Award, value: "15+", label: "Années d'Expérience" },
   ];
 
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % heroImages.length);
+    }, 15000);
+
+    return () => window.clearInterval(interval);
+  }, [heroImages.length]);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Construction site"
-          className="w-full h-full object-cover"
-        />
+        {heroImages.map((image, index) => (
+          <img
+            key={image}
+            src={image}
+            alt="Construction site"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === activeIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
 
@@ -28,7 +52,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 bg-background/10 backdrop-blur-sm border border-background/20 rounded-full px-4 py-2 mb-6 animate-fade-in">
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             <span className="text-background/90 text-sm font-medium">
-              Construction & Bâtiment depuis 2009
+              Construction & Bâtiment
             </span>
           </div>
 
@@ -41,7 +65,7 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-background/80 mb-8 max-w-2xl animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            GCBAT SARL, votre partenaire de confiance pour tous vos projets de construction. 
+            TGCBAT SARL, votre partenaire de confiance pour tous vos projets de construction. 
             De la conception à la réalisation, nous donnons vie à vos ambitions avec excellence et professionnalisme.
           </p>
 
@@ -49,7 +73,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Button variant="hero" size="xl" asChild>
               <a href="#contact">
-                Demander un Devis
+                Contactez Nous
                 <ArrowRight className="h-5 w-5" />
               </a>
             </Button>

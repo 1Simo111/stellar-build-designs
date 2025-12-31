@@ -32,17 +32,17 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Adresse",
-      content: "123 Rue de la Construction\n75001 Paris, France",
+      content: "Lot Haddiou N° 501\nSidi Maarouf\nCasablanca, Maroc",
     },
     {
       icon: Phone,
       title: "Téléphone",
-      content: "+33 1 23 45 67 89",
+      content: "05 40 13 16 17 – 05 22 78 05 24\n06 61 70 68 67",
     },
     {
       icon: Mail,
-      title: "Email",
-      content: "contact@gcbat-sarl.fr",
+      title: "Adresse e-mail",
+      content: "contact@tgcbat.com",
     },
     {
       icon: Clock,
@@ -52,7 +52,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-light-gray">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -116,7 +116,7 @@ const Contact = () => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="jean@exemple.fr"
+                    placeholder="contact@tgcbat.com"
                     required
                     className="h-12"
                   />
@@ -129,7 +129,7 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+33 6 12 34 56 78"
+                    placeholder="06 61 70 68 67"
                     className="h-12"
                   />
                 </div>

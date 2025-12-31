@@ -1,13 +1,29 @@
 import { Building2, ShieldCheck, Award, Handshake } from "lucide-react";
+import admLogo from "@/assets/partners/ADM-logo.png";
+import adohaLogo from "@/assets/partners/logo-addoha.png";
+import ministereLogo from "@/assets/partners/ministere-de-la-sante-et-de-la-protection-sociale-logo-png_seeklogo-427326.png";
+import sourceChimiquesLogo from "@/assets/partners/SOURCE-CHIMIQUES.png";
+import vdlLogo from "@/assets/partners/vdl_logo-removebg-preview.png";
+import klkLogo from "@/assets/partners/klk_logo.png";
+import genericLogo1 from "@/assets/partners/Screenshot from 2025-12-31 22-12-42.png";
+import genericLogo2 from "@/assets/partners/Screenshot from 2025-12-31 22-13-09.png";
+import genericLogo3 from "@/assets/partners/logo.svg";
+import genericLogo4 from "@/assets/partners/images.jpg";
+import newPartnerLogo from "@/assets/partners/new.png";
 
 const Partners = () => {
   const partnerLogos = [
-    "Bouygues Construction",
-    "Vinci",
-    "Eiffage",
-    "Lafarge",
-    "Saint-Gobain",
-    "Schneider Electric",
+    { name: "ADM", logo: admLogo },
+    { name: "Addoha", logo: adohaLogo },
+    { name: "Ministère de la Santé", logo: ministereLogo },
+    { name: "Source Chimiques", logo: sourceChimiquesLogo },
+    { name: "VDL", logo: vdlLogo },
+    { name: "KLK", logo: klkLogo },
+    { name: "Partenaire", logo: genericLogo1 },
+    { name: "Partenaire", logo: genericLogo2 },
+    { name: "Partenaire", logo: genericLogo3 },
+    { name: "Partenaire", logo: genericLogo4 },
+    { name: "Nouveau Partenaire", logo: newPartnerLogo },
   ];
 
   const values = [
@@ -34,33 +50,36 @@ const Partners = () => {
   ];
 
   return (
-    <section id="partners" className="py-20 bg-secondary">
+    <section id="partners" className="py-20 bg-light-gray">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-background/80 font-semibold mb-4 uppercase tracking-wider text-sm">
+          <span className="inline-block text-primary font-semibold mb-4 uppercase tracking-wider text-sm">
             Nos Partenaires
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-background mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Des Partenaires de Confiance pour des{" "}
             <span className="text-primary">Projets Réussis</span>
           </h2>
-          <p className="text-background/70">
+          <p className="text-muted-foreground">
             Nous collaborons avec les acteurs majeurs de l'industrie pour vous garantir 
             les meilleures solutions et matériaux.
           </p>
         </div>
 
         {/* Partner Logos */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-16">
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
           {partnerLogos.map((partner, index) => (
             <div
-              key={index}
-              className="bg-background/10 backdrop-blur-sm rounded-lg p-6 flex items-center justify-center hover:bg-background/20 transition-colors duration-300"
+              key={`${partner.name}-${index}`}
+              className="bg-background rounded-lg p-5 flex items-center justify-center border border-border shadow-sm hover:shadow-md transition-all duration-300 w-[160px]"
             >
-              <span className="text-background font-bold text-sm text-center">
-                {partner}
-              </span>
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="h-12 w-auto object-contain transition duration-300"
+                loading="lazy"
+              />
             </div>
           ))}
         </div>
@@ -72,13 +91,13 @@ const Partners = () => {
               key={index}
               className="text-center p-6"
             >
-              <div className="w-16 h-16 rounded-full bg-background/10 flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 rounded-full bg-background flex items-center justify-center mx-auto mb-4 border border-border">
                 <value.icon className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-lg font-bold text-background mb-2">
+              <h3 className="text-lg font-bold text-foreground mb-2">
                 {value.title}
               </h3>
-              <p className="text-background/70 text-sm">
+              <p className="text-muted-foreground text-sm">
                 {value.description}
               </p>
             </div>

@@ -1,10 +1,32 @@
-import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimeoutRef.current) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (scrollTimeoutRef.current) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const navLinks = [
     { name: "Accueil", href: "#home" },
@@ -15,12 +37,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-border transition-all duration-300 ${
+        isScrolling ? "bg-background/60 backdrop-blur-md shadow-sm" : "bg-background"
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <img src={logo} alt="GCBAT SARL" className="h-12 w-auto" />
+            <img src={logo} alt="TGCBAT SARL" className="h-12 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
@@ -38,12 +64,8 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+33123456789" className="flex items-center gap-2 text-secondary font-semibold">
-              <Phone className="h-4 w-4" />
-              <span>+33 1 23 45 67 89</span>
-            </a>
             <Button variant="default" size="lg" asChild>
-              <a href="#contact">Devis Gratuit</a>
+              <a href="#contact">Contactez Nous</a>
             </Button>
           </div>
 
@@ -72,7 +94,7 @@ const Navbar = () => {
                 </a>
               ))}
               <Button variant="default" size="lg" className="mt-4" asChild>
-                <a href="#contact">Devis Gratuit</a>
+                <a href="#contact">Contactez Nous</a>
               </Button>
             </div>
           </div>

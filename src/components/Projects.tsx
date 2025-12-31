@@ -1,34 +1,9 @@
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import { projects } from "@/data/projects";
 
 const Projects = () => {
-  const projects = [
-    {
-      image: project1,
-      title: "Résidence Les Jardins",
-      category: "Résidentiel",
-      location: "Paris 15ème",
-      year: "2024",
-    },
-    {
-      image: project2,
-      title: "Tour Horizon Business",
-      category: "Commercial",
-      location: "La Défense",
-      year: "2023",
-    },
-    {
-      image: project3,
-      title: "Centre Logistique Nord",
-      category: "Industriel",
-      location: "Roissy CDG",
-      year: "2023",
-    },
-  ];
-
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -44,19 +19,20 @@ const Projects = () => {
             </h2>
           </div>
           <Button variant="outline" size="lg" asChild>
-            <a href="#contact">
+            <Link to="/projects">
               Voir Tous les Projets
               <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </Button>
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-xl cursor-pointer"
+            <Link
+              key={project.id}
+              to={`/projects/${project.id}`}
+              className="group relative overflow-hidden rounded-xl"
             >
               {/* Image */}
               <div className="aspect-[4/3] overflow-hidden">
@@ -93,7 +69,7 @@ const Projects = () => {
               <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:bg-primary">
                 <ArrowUpRight className="h-5 w-5 text-background" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
