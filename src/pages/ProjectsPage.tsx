@@ -4,8 +4,8 @@ import { projects } from "@/data/projects";
 
 const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <section className="pt-20 pb-20 bg-background">
+    <div className="flex min-h-dvh flex-col bg-background">
+      <section className="flex-1 pt-20 pb-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="mb-10">
             <Link
