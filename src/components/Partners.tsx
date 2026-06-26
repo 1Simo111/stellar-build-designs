@@ -1,4 +1,7 @@
 import { Building2, ShieldCheck, Award, Handshake } from "lucide-react";
+import autodistributionLogo from "@/assets/partners/logo-autodistribution.png";
+import a2IngenierieLogo from "@/assets/partners/a2-ingenierie.jpeg";
+import lmmLogo from "@/assets/partners/lmm-agencement.png";
 import admLogo from "@/assets/partners/ADM-logo.png";
 import adohaLogo from "@/assets/partners/logo-addoha.png";
 import ministereLogo from "@/assets/partners/ministere-de-la-sante-et-de-la-protection-sociale-logo-png_seeklogo-427326.png";
@@ -9,10 +12,12 @@ import genericLogo1 from "@/assets/partners/Screenshot from 2025-12-31 22-12-42.
 import genericLogo2 from "@/assets/partners/Screenshot from 2025-12-31 22-13-09.png";
 import genericLogo3 from "@/assets/partners/logo.svg";
 import genericLogo4 from "@/assets/partners/images.jpg";
-import newPartnerLogo from "@/assets/partners/new.png";
 
 const Partners = () => {
   const partnerLogos = [
+    { name: "A2 Ingénierie", logo: a2IngenierieLogo },
+    { name: "Autodistribution", logo: autodistributionLogo },
+    { name: "LMM Agencement", logo: lmmLogo },
     { name: "ADM", logo: admLogo },
     { name: "Addoha", logo: adohaLogo },
     { name: "Ministère de la Santé", logo: ministereLogo },
@@ -23,7 +28,6 @@ const Partners = () => {
     { name: "Partenaire", logo: genericLogo2 },
     { name: "Partenaire", logo: genericLogo3 },
     { name: "Partenaire", logo: genericLogo4 },
-    { name: "Nouveau Partenaire", logo: newPartnerLogo },
   ];
 
   const values = [

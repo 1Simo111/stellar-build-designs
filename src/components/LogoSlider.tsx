@@ -1,3 +1,6 @@
+import a2IngenierieLogo from "@/assets/partners/a2-ingenierie.jpeg";
+import autodistributionLogo from "@/assets/partners/logo-autodistribution.png";
+import lmmLogo from "@/assets/partners/lmm-agencement.png";
 import admLogo from "@/assets/partners/ADM-logo.png";
 import adohaLogo from "@/assets/partners/logo-addoha.png";
 import ministereLogo from "@/assets/partners/ministere-de-la-sante-et-de-la-protection-sociale-logo-png_seeklogo-427326.png";
@@ -8,6 +11,9 @@ import newPartnerLogo from "@/assets/partners/new.png";
 
 const LogoSlider = () => {
   const logos = [
+    { name: "A2 Ingénierie", logo: a2IngenierieLogo },
+    { name: "Autodistribution", logo: autodistributionLogo },
+    { name: "LMM Agencement", logo: lmmLogo },
     { name: "ADM", logo: admLogo },
     { name: "Addoha", logo: adohaLogo },
     { name: "Ministère de la Santé", logo: ministereLogo },
